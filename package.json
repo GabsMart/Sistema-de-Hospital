@@ -1,0 +1,27 @@
+{
+  "name": "sistema-de-hospital",
+  "version": "1.0.0",
+  "description": "Sistema de Hospital criado para médicos e recepcionistas. O sistema inclui funcionalidades de marcação, exclusão, visualização de exames e outros.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./index.js localhost 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabsMart/Sistema-de-Hospital.git"
+  },
+  "author": "Gabriel G.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GabsMart/Sistema-de-Hospital/issues"
+  },
+  "homepage": "https://github.com/GabsMart/Sistema-de-Hospital#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "mysql2": "^3.6.1",
+    "nodemon": "^3.0.1",
+    "sequelize": "^6.33.0"
+  }
+}
