@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Olá! Faça o Login:</h1>
+
+    <form action="/login" method="post">
+        <div class="form-control">
+            <label for="userCode">Código de Usuário:</label>
+            <input type="text" name="userCode" placeholder="Digite o código">
+        </div>
+
+        <div class="form-control">
+            <label for="password">Senha:</label>
+            <input type="password" name="password" placeholder="Digite a senha">
+        </div>
+        <input type="submit" value="Login">
+    </form>
+
+    <p>Não possui cadastro? <a href="/register">Registre-se</a></p>
+</div>
+
+{{#if session.userid}}
+    <a href="/logout">Logout</a>
+
+{{else}}
+    <a href="/register">Registrar</a>
+    <a href="/login">Login</a>
+{{/if}}

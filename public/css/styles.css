@@ -56,6 +56,17 @@ input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
+/* Mensagens de erro*/
+.message {
+    background-color: #ff5733; /* Cor de fundo laranja */
+    color: #fff; /* Cor do texto branca */
+    padding: 10px; /* Espaçamento interno para a mensagem */
+    text-align: center; /* Alinhamento centralizado do texto */
+    font-weight: bold; /* Texto em negrito */
+    border-radius: 5px; /* Borda arredondada */
+    margin-top: 10px; /* Espaço superior para separar de outros elementos */
+}
+
 /* Estilo para o footer */
 footer {
     height: 25px;
