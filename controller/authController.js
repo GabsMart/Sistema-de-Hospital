@@ -75,13 +75,11 @@ class AuthController {
 
         try {
             const createdUser = await User.create(user)
+            const userId = createdUser.id
+            const newUser = await User.findOne({where: {id:userId}})
 
-            // Salva a sessão após cadastro
-            req.session.userid = createdUser.id
-            req.session.save(() => {
-                req.flash('message', 'Cadastro realizado com sucesso. Seu código de usuário é')
-                res.render('auth/login')
-            })
+            req.flash('message', `Cadastro realizado com sucesso. Seu código de usuário é ${newUser.userCode}`)
+            res.render('auth/login')
 
         } catch (error) {
             console.log(error)
