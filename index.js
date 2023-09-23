@@ -69,6 +69,11 @@ const conn = require('./db/conn');
 const authRoutes = require('./routes/authRoutes')
 app.use('/', authRoutes)
 
+// Página 404
+app.use(function(req, res) {
+    res.status(404).render(`404.handlebars`, {layout: 'auth'})
+})
+
 // Sincronizando o modelo com o banco de dados usando o método "sync()" do objeto "conn" (instância do Sequelize).
 conn
     .sync()
