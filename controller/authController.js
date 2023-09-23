@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs')
 // Definindo a classe "AuthController" que possui os metodos referentes a login e registro de usuário
 class AuthController {
     static userLogin (req, res) {
-        res.render('auth/login')
+        res.render('auth/login', {layout: 'user'})
     }
 
     static async login (req, res) {
@@ -19,7 +19,7 @@ class AuthController {
         // Confirma se o código do usuário existe
         if (!user) {
             req.flash('message', 'Código de Usuário não encontrado. Tente novamente.')
-            res.render('auth/login');
+            res.render('auth/login', {layout: 'user'});
             return
         }
 
@@ -27,7 +27,7 @@ class AuthController {
         const passwordMatch = bcrypt.compareSync(password, user.password)
         if (!passwordMatch) {
             req.flash('message', 'Senha inválida. Tente novamente.')
-            res.render('auth/login');
+            res.render('auth/login', {layout: 'user'});
             return
         }
 
@@ -41,14 +41,14 @@ class AuthController {
     
         // Verifica se a ocupação está vazia  
         if (useroccupation) {
-            res.render('auth/auth')
+            res.render('auth/auth', {layout: 'auth'})
         } else {
-            res.render('auth/register')
+            res.render('auth/register', {layout: 'user'})
         }
     }
 
     static createNewUser (req, res) {
-        res.render('auth/register')
+        res.render('auth/register', {layout: 'user'})
     }
 
     static async addNewUser (req, res) {
@@ -58,7 +58,7 @@ class AuthController {
         // Confirma se a senha é igual a confirmação da senha
         if( password != confirmpassword) {
             req.flash('message', 'As senhas não conferem, tente novamente!')
-            res.render('auth/register');
+            res.render('auth/register', {layout: 'user'});
             return
         }
 
@@ -79,7 +79,7 @@ class AuthController {
             const newUser = await User.findOne({where: {id:userId}})
 
             req.flash('message', `Cadastro realizado com sucesso. Seu código de usuário é ${newUser.userCode}`)
-            res.render('auth/login')
+            res.render('auth/login', {layout: 'user'})
 
         } catch (error) {
             console.log(error)
