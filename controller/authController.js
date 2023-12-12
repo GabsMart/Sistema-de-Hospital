@@ -31,20 +31,18 @@ class AuthController {
             return
         }
 
+        // Verifica se o usuário possui ocupação. Se não tiver, não está aprovado no sistema, portanto será redirecionado para tal página.
+        const useroccupation = await User.findOne({where: {userCode: userCode}})
+        if (useroccupation.occupation == null) {
+            res.render('auth/auth', {layout: 'auth'})
+        }
+
         // Se o código e senha estiverem corretos, logar no sistema
         req.session.userid = user.id
-        req.session.save();
+        req.session.save()
 
-        // Se a ocupação estiver vazia, significa que o usuário ainda não foi aprovado no sistema. A página de autorização informa isso ao usuário
-        const occupation = null;
-        const useroccupation = await User.findOne({where: {occupation: occupation, userCode: userCode}})
-    
-        // Verifica se a ocupação está vazia  
-        if (useroccupation) {
-            res.render('auth/auth', {layout: 'auth'})
-        } else {
-            res.render('auth/register', {layout: 'user'})
-        }
+        const usuario = await User.findOne({where: {userCode: userCode}})
+        res.render('dashboard/dashboard', {usuario})
     }
 
     static createNewUser (req, res) {
@@ -89,6 +87,10 @@ class AuthController {
     static logout(req, res) {
         req.session.destroy();
         res.redirect('/login')
+    }
+
+    static dashboard(req,res) {
+        res.render('dashboard/dashboard', {layout: 'dashboard'});
     }
 }
 

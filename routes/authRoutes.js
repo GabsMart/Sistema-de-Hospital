@@ -17,4 +17,7 @@ router.post('/register', AuthController.addNewUser);
 // Logout
 router.get('/logout', AuthController.logout);
 
+// Dashboard 
+router.get('/dashboard', AuthController.dashboard);
+
 module.exports = router;
