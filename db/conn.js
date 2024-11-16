@@ -2,7 +2,7 @@
 const {Sequelize} = require('sequelize')
 
 // Cria um novo objeto com as informações de nome do banco de dados, usuário e senha, nesta ordem.
-const sequelize = new Sequelize('hospital', 'root', '', {
+const sequelize = new Sequelize('sisline', 'root', '', {
     host: 'localhost',
     dialect: 'mysql'
 })

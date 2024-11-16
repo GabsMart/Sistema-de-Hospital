@@ -60,6 +60,7 @@ app.use((req, res, next) => {
 app.use(flash())
 
 // Adiciona a pasta 'public', que irá conter arquivos estáticos de estilização como css e imagens
+
 app.use(express.static('public'));
 
 // Importa o arquivo de conexão ao banco de dados

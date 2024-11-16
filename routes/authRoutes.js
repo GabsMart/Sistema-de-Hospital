@@ -4,6 +4,7 @@ const router = express.Router()
 
 // Extração da classe 'TaskController'
 const AuthController = require('../controller/authController');
+const generalController = require('../controller/generalController');
 
 // Definindo as URL's referentes aos usuários
 // Página de Login
@@ -19,5 +20,8 @@ router.get('/logout', AuthController.logout);
 
 // Dashboard 
 router.get('/dashboard', AuthController.dashboard);
+
+//Main 
+router.get('/', generalController.main)
 
 module.exports = router;
